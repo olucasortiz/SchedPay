@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SchedPay.Api/SchedPay.Api.csproj" />
+  <Project Path="SchedPay.Application/SchedPay.Application.csproj" />
+  <Project Path="SchedPay.Domain/SchedPay.Domain.csproj" />
+</Solution>
