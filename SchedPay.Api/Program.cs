@@ -2,7 +2,6 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 using Serilog.Sinks.Grafana.Loki;
-using Serilog.Sinks.Grafana.Loki;
 var builder = WebApplication.CreateBuilder(args);
 
 // Serilog: logs estruturados (ótimo pra Fluentd/Loki depois)
@@ -25,7 +24,7 @@ Log.Information("SchedPay API starting up...");
 
 builder.Host.UseSerilog();
 
-// Controllers + OpenAPI
+// Controllers + OpenAPI 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 

@@ -16,7 +16,7 @@ namespace SchedPay.Domain.Entities
 
         public DateTimeOffset? DeletedAtUtc { get; private set; }
 
-        public bool isDeleted => DeletedAtUtc.HasValue;
+        public bool IsDeleted => DeletedAtUtc.HasValue;
         public Client(Guid id, string name, string contactInfo, DateTimeOffset createdAtUtc)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -32,7 +32,7 @@ namespace SchedPay.Domain.Entities
 
         public void SoftDelete(DateTimeOffset nowUtc)
         {
-            if(isDeleted)
+            if(IsDeleted)
                 throw new InvalidOperationException("Client is already deleted");
             DeletedAtUtc = nowUtc;
             UpdatedAtUtc = nowUtc;
@@ -40,7 +40,7 @@ namespace SchedPay.Domain.Entities
 
         public void Update(string name, string contactInfo, DateTimeOffset nowUtc)
         {
-            if (isDeleted)
+            if (IsDeleted)
                 throw new InvalidOperationException("Cannot update a deleted client");
             if(string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Client name is required");

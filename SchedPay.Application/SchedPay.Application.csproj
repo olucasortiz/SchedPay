@@ -4,6 +4,10 @@
     <ProjectReference Include="..\SchedPay.Domain\SchedPay.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Clients\SoftDeleteClient\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
