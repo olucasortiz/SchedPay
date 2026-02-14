@@ -2,6 +2,12 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 using Serilog.Sinks.Grafana.Loki;
+using SchedPay.Api.Infrastructure;
+using SchedPay.Application.Common;
+using SchedPay.Application.Repositories;
+using SchedPay.Application.Clients.CreateClient;
+using SchedPay.Application.Clients.GetClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Serilog: logs estruturados (ótimo pra Fluentd/Loki depois)
@@ -30,6 +36,11 @@ builder.Services.AddOpenApi();
 
 
 builder.Services.AddTransient<SchedPay.Api.Middlewares.CorrelationIdMiddleware>();
+builder.Services.AddSingleton<IClientRepository, InMemoryClientRepository>();
+builder.Services.AddSingleton<IClock, SystemClock>();
+
+builder.Services.AddTransient<CreateClientUseCase>();
+builder.Services.AddTransient<GetClientByIdUseCase>();
 var app = builder.Build();
 
 app.UseMiddleware<SchedPay.Api.Middlewares.CorrelationIdMiddleware>();
